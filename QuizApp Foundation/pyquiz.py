@@ -60,6 +60,18 @@ class QuizApp:
             elif selection[0] == 'L':
                 print("\nAvailable Quizzes Are: ")
                 #! TODO list the quizzes
+                print("-------------------\n")
+                continue
+
+            elif selection[0] == 'T':
+                try:
+                    quiznum = input("Quiz Number: ")
+                    print(f"You have selected quiz {quiznum}")
+                    # Todo start the quiz
+                except:
+                    self.menu_error()
+            else:
+                self.menu_error()
 
     # This is the entry point to the program
 
