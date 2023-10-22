@@ -5,7 +5,10 @@
 class Question:
     def __init__(self):
         # TODO: define the Question fields
-        pass
+        self.point = 0
+        self.correct_answer = ""
+        self.text = ""
+        self.is_correct = False
 
 
 class QuestionTF(Question):
@@ -19,10 +22,17 @@ class QuestionTF(Question):
             response = input("? ")
 
             # TODO: Check to see if no response was entered
-
+            if len(response) == 0:
+                print("Sorry, that's not the valid response. Please try again!")
+                continue
             # TODO: Check to see if either T or F was given
-
+            response = response.lower()
+            if response[0] != "t" or response[0] != "f":
+                print("Sorry, that's not the valid response. Please try again!")
+                continue
             # TODO: mark this question as correct if answered correctly
+            if response[0] == self.correct_answer:
+                self.is_correct = True
 
             break
 
@@ -31,17 +41,25 @@ class QuestioncMC(Question):
     def __init__(self):
         super().__init__()
         # TODO: define the answers for this question
+        self.answers = []
 
     # TODO: define the ask method
     def ask(self):
         while (True):
             # TODO: Present the question and possible answers
-
+            print(self.text)
+            for a in self.answers:
+                print(f"{a.name} {a.text}")
             response = input("? ")
 
             # TODO: Check to see if no response was entered
-
+            if len(response) == 0:
+                print("Sorry, that's not the valid response. Please try again!")
+                continue
             # TODO: mark this question as correct if answered correctly
+            response = response.lower()
+            if response[0] == self.correct_answer:
+                self.is_correct = True
 
             break
 
